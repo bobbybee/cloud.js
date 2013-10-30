@@ -10,7 +10,7 @@ var http = require('http');
 
 var httpServer = http.createServer(function(req, res){
      res.end('1337 WebSocket');
-});
+}).listen(1337);
 
 var wsServer = new WebSocketServer({httpServer:httpServer});
 wsServer.on('request', function(req){
