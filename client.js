@@ -41,6 +41,9 @@ CloudClient.prototype.parseMessage = function(data){
     }
 };
 
+CloudClient.prototype.handshake = function(username, token, projectID){
+    this._sock.send(JSON.stringify({"method":"handshake", "username":username, "token":token, "projectID":projectID}));
+};
 CloudClient.prototype.setVariable = function(name, value){
     this._sock.send(JSON.stringify({"method":"set", "name":name, "value":value}));
 };

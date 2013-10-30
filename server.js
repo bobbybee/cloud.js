@@ -17,11 +17,19 @@ wsServer.on('request', function(req){
             var conn = req.accept(null, req.origin); // TODO: add origin verification
             
             conn.on('message', function(m){
-                    var data = m.utf8Data; // TODO: add binary support
-                    console.log("Received "+data); // TODO: add parsing
+                    try{
+                        var data = m.utf8Data; // TODO: add binary support
+                        console.log("Received "+data);
+                        var msg = JSON.parse(data);
                     
-                    // to focus on the client at the moment, loopback:
-                    conn.send(data);
+                    if(msg.method == 'handshake'){
+                    
+                    } else if(msg.method == 'set'){
+                    
+                    }
+                    } catch(e){
+                        console.log(e); // fail silently
+                    }
                     });
             
             conn.on('end', function(){
