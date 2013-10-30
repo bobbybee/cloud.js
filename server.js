@@ -19,6 +19,9 @@ wsServer.on('request', function(req){
             conn.on('message', function(m){
                     var data = m.utf8Data; // TODO: add binary support
                     console.log("Received "+data); // TODO: add parsing
+                    
+                    // to focus on the client at the moment, loopback:
+                    conn.send(data);
                     });
             
             conn.on('end', function(){
